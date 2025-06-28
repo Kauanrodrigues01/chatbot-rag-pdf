@@ -5,6 +5,7 @@ from app.settings import PERSIST_DIRECTORY
 
 _vector_store_instance = None
 
+
 def load_vector_store():
     global _vector_store_instance
 
@@ -20,6 +21,7 @@ def load_vector_store():
     except Exception as e:
         print(f'Erro ao recuperar a Vector Store: {e}')
         return None
+
 
 def add_documents_to_vector_store(chunks):
     vector_store = load_vector_store()

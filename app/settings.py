@@ -1,6 +1,5 @@
 
-from decouple import config,UndefinedValueError
-
+from decouple import UndefinedValueError, config
 
 try:
     OPENAI_API_KEY = config('OPENAI_API_KEY')

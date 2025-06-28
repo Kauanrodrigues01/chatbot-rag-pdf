@@ -1,10 +1,11 @@
 import os
+
 import streamlit as st
 
 from app.settings import OPENAI_API_KEY
 from rag.loader import process_pdf_for_chunks
-from rag.vector_store import load_vector_store, add_documents_to_vector_store
 from rag.rag_chain import ask_question
+from rag.vector_store import add_documents_to_vector_store, load_vector_store
 
 os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
 
@@ -31,15 +32,15 @@ with st.sidebar:
     if send_button:
         if upload_files:
             chunks = []
-            
+
             for file in upload_files:
                 file_chunks = process_pdf_for_chunks(file=file)
                 chunks.extend(file_chunks)
-            
+
             vector_store = add_documents_to_vector_store(chunks)
         else:
             st.warning('Nenhum arquivo foi enviado.')
-    
+
     model_options = [
         'gpt-3.5-turbo',
         'gpt-4',
@@ -66,7 +67,7 @@ if vector_store and question:
 
     with st.spinner('Buscando resposta...'):
         response = ask_question(
-            model=selected_model, 
+            model=selected_model,
             vector_store=vector_store,
             query=question,
             history_messages=st.session_state['history_messages']

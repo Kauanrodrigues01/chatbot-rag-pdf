@@ -1,28 +1,29 @@
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
-from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+
 
 def ask_question(model: str, vector_store, query: str, history_messages: list):
     retriever = vector_store.as_retriever()
     llm = ChatOpenAI(
         model=model
     )
-    
+
     system_prompt = '''
     Use o contexto para responder as perguntas.
     Se não souber, diga que não há informações suficientes para responder a pergunta.
     Responda em markdown com visualizações elaboradas.
     Contexto: {context}
     '''
-    
+
     messages = [('system', system_prompt)]
     for message in history_messages:
         messages.append((message.get('role'), message.get('content')))
     messages.append(('human', '{input}'))
 
     prompt = ChatPromptTemplate.from_messages(messages)
-    
+
     # Esta função cria um chain que recebe uma lista de documentos (List[Document]) e:
     # - Concatena o conteúdo dos documentos em uma única string e insere na variável "context" do prompt.
     # - Substitui a variável "input" pela pergunta do usuário (passada como argumento).
@@ -47,7 +48,6 @@ def ask_question(model: str, vector_store, query: str, history_messages: list):
 
     response = chain.invoke({'input': query})
     return response.get('answer')
-
 
     # Fluxo completo da cadeia de RAG usando retrieval_chain + combine_docs_chain:
     #
