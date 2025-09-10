@@ -4,6 +4,16 @@
   <img src="https://raw.githubusercontent.com/Kauanrodrigues01/Kauanrodrigues01/refs/heads/main/images/projetos/chatbot-com-ia/page.png" width="70%">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit Badge">
+  <img src="https://img.shields.io/badge/LangChain-2E86C1?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain Badge">
+  <img src="https://img.shields.io/badge/ChromaDB-00C853?style=for-the-badge&logo=chromadb&logoColor=white" alt="ChromaDB Badge">
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI Badge">
+</p>
+
+---
+
 Este projeto é um chatbot construído com **Streamlit** e **LangChain**, que utiliza a técnica de **RAG (Retrieval-Augmented Generation)** para responder perguntas baseadas em arquivos PDF enviados pelo usuário.
 
 A aplicação permite:
@@ -21,7 +31,7 @@ A aplicação permite:
 ```
 .
 ├── app/
-│   ├── settings.py            # Váriaveis de Ambiente
+│   ├── settings.py            # Variáveis de Ambiente
 │
 ├── rag/
 │   ├── __init__.py
@@ -106,7 +116,7 @@ PERSIST_DIRECTORY=vector-db
 ### 3. Rodar o projeto
 
 ```bash
-streamlit run app/main.py
+streamlit run main.py
 ```
 
 ---
@@ -151,3 +161,10 @@ streamlit run app/main.py
 * Validação de arquivos e mensagens no frontend.
 
 ---
+
+## 👨‍💻 Autor
+
+**Kauan Rodrigues Lima**
+
+- GitHub: [@Kauanrodrigues01](https://github.com/Kauanrodrigues01)
+- LinkedIn: [Seu LinkedIn](https://www.linkedin.com/in/kauan-rodrigues-lima/)
